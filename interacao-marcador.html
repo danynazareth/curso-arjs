@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+ <head>
+      <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+      <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  </head>
+  
+  <style>
+    .button{
+      background-color: #4caf50;
+      border: none;
+      color: white;
+      padding: 7px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 12px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 12px;
+      border: 2px solid rgba(9,148,28,0.541);
+      box-shadow: 0 8px 16px 0 rgba(0, 0,0, 0.2), 0 6px 20px rgba(0, 0,0, 0.19);
+      visibility: hidden;
+    }
+  </style>
+
+ 
+  <body style="margin : 0px; overflow: hidden;">
+      <div style="position: relative; top:16px; width:100%; text-align:center; z-index:1;">
+          <button class="button" id="btn1" >
+            +
+          </button>
+          <button class="button" id="btn2">
+            -
+          </button>
+     </div>
+  
+
+    <a-scene
+      vr-mode-ui="enabled: false;"
+      embedded
+      arjs="debugUIEnabled: false;"
+    >
+      
+      <a-assets>
+        <a-assets-item id="modelo" src="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf">
+            
+        </a-assets-item>
+      </a-assets>
+      <a-marker preset="hiro">
+         
+              <a-entity
+        id="produto"
+        gltf-model="#modelo"
+        scale="0.05 0.05 0.05"
+        position="0 0 0"
+      >
+      </a-marker>
+  
+      <a-entity camera></a-entity>
+    </a-scene>
+      
+      <script>
+    
+    document.getElementById("btn1").addEventListener("click", (e)=>{
+      var el = document.querySelector('#produto');
+      
+      el.setAttribute("scale",{x: 0.08, y:0.08, z:0.08});
+      el.setAttribute("position",{x: 0, y:0, z:0});
+    });
+    
+    
+    document.getElementById("btn2").addEventListener("click", (e)=>{
+      var el = document.querySelector('#produto');
+      
+      el.setAttribute("scale",{x: 0.02, y:0.02, z:0.02});
+       el.setAttribute("position",{x: 0, y:0, z:0}); 
+    });
+    
+    var m = document.querySelector("a-marker")
+    
+    m.addEventListener("markerFound", (e)=>{
+      var btn1 = document.querySelector("#btn1").style.visibility = "visible";
+      var btn2 = document.querySelector("#btn2").style.visibility = "visible";
+    })
+    
+    m.addEventListener("markerLost", (e)=>{
+      var btn1 = document.querySelector("#btn1").style.visibility = "hidden";
+      var btn2 = document.querySelector("#btn2").style.visibility = "hidden";
+    })
+  </script>
+  </body>
+  
+
+</html>
