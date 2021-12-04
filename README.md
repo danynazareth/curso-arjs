@@ -21,3 +21,8 @@ Exibe um elemento 3d a partir do marcador barcode
 ## video-rever.html
 
 Exibe o video com o marcador padrão, porém o video não reproduz. Favor rever o problema no arjs.
+
+
+## Referência
+
+https://github.com/Carnaux/NFT-Marker-Creator/wiki/Creating-good-markers
