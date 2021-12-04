@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+      <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  </head>
+  
+  <script>
+      AFRAME.registerComponent('controlador', {
+        init: function(){
+          this.toggle=false;
+          this.vid=document.querySelecton("#video");
+          this.vid.pause();
+        },
+        tick: function(){
+          if(this.el.object3D.visuble == true){
+            if(!this.toggle){
+              this.toggle=true;
+              this.vid.play();
+            }
+          }else{
+              
+              this.vid.pause();
+          }
+        }
+      });
+  </script>
+  
+  <body style="margin : 0px; overflow: hidden;">
+    <a-scene vr-mode-ui="enabled: false" embedded arjs="debugUIEnabled: false;">
+      <a-assets>
+        <video id="video" src="https://cdn.glitch.me/d7d5b010-272b-464d-baae-e29831de7f52%2Fgalinha.mov?v=1638625419942"></video>
+      </a-assets>
+      <a-marker preset="hiro" controlador>
+        <a-video width="1.5" height="1" 
+                 rotation="90 0 0" position="0 0 0"
+                 src="#video">
+        </a-video>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
