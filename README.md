@@ -26,6 +26,10 @@ https://au.gmented.com/app/marker/marker.php
 Exibe o video com o marcador padrão, porém o video não reproduz. Favor rever o problema no arjs.
 
 
+## interacao-marker.html
+
+Interação com o marcador 3d aumentando e dimunuindo sua escala
+
 ## Referência
 
 https://github.com/Carnaux/NFT-Marker-Creator/wiki/Creating-good-markers
